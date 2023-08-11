@@ -1,0 +1,57 @@
+// C++ Code for Rock paper scissor game
+#include <iostream>
+using namespace std;
+
+// Constants for the three possible choices
+const char ROCK = 'r';
+const char PAPER = 'p';
+const char SCISSORS = 's';
+
+// Function to generate a random choice for the computer
+char generateComputerChoice() {
+  int randomNumber = rand() % 3 + 1;
+  switch (randomNumber) {
+    case 1:
+      return ROCK;
+    case 2:
+      return PAPER;
+    case 3:
+      return SCISSORS;
+  }
+}
+
+// Function to compare the player's and computer's choices and determine the winner
+string determineWinner(char playerChoice, char computerChoice) {
+  if (playerChoice == computerChoice) {
+    return "Draw";
+  } else if (playerChoice == ROCK && computerChoice == SCISSORS) {
+    return "Player wins";
+  } else if (playerChoice == PAPER && computerChoice == ROCK) {
+    return "Player wins";
+  } else if (playerChoice == SCISSORS && computerChoice == PAPER) {
+    return "Player wins";
+  } else {
+    return "Computer wins";
+  }
+}
+
+int main() {
+  // Initialize the player's and computer's choices
+  char playerChoice;
+  char computerChoice;
+
+  // Get the player's choice
+  cout << "Choose Rock (r), Paper (p), or Scissors (s): ";
+  cin >> playerChoice;
+
+  // Generate the computer's choice
+  computerChoice = generateComputerChoice();
+
+  // Determine the winner
+  string winner = determineWinner(playerChoice, computerChoice);
+
+  // Display the winner
+  cout << "The winner is: " << winner << endl;
+
+  return 0;
+}
